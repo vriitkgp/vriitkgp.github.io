@@ -1,5 +1,9 @@
 $(document).ready(function(event){
 $("img").addClass('lazy');
+ $(".back-to-top").click(function(){
+    $(".back-to-top").addClass("animated");
+    $(".back-to-top").addClass("rubberBand");
+ });
 wow = new WOW(
 {
 animateClass: 'animated',
@@ -62,3 +66,21 @@ jQuery("#status").fadeOut();
 jQuery("#preloader").delay(1000).fadeOut("slow");
 jQuery("#main-carousel").delay(3000).fadeIn("slow");
 })
+
+$(document).ready(function(){
+var offset = 250;
+var duration = 300;
+$(window).scroll(function() {
+if (jQuery(this).scrollTop() > offset) {
+$(".back-to-top").fadeIn(duration);
+} else {
+$(".back-to-top").fadeOut(duration);
+}
+});
+
+$(".back-to-top").click(function(event) {
+event.preventDefault();
+jQuery('html, body').animate({scrollTop: 0}, duration);
+return false;
+})
+});
